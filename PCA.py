@@ -43,14 +43,15 @@ if mode == '1':
         print("Data has NOT been standardized.")
 
     # Apply PCA for visualization
-    pca = PCA(n_components=2)
+    pca = PCA(n_components=4)
     X_pca = pca.fit_transform(data_for_pca)
 
     # Display the explained variance of each principal component
     explained_variance = pca.explained_variance_ratio_
     print(f"Explained variance by Principal Component 1: {explained_variance[0]:.4%}")
     print(f"Explained variance by Principal Component 2: {explained_variance[1]:.4%}")
-
+    print(f"Explained variance by Principal Component 3: {explained_variance[2]:.4%}")
+    print(f"Explained variance by Principal Component 4: {explained_variance[3]:.4%}")
     # Visualize the actual species labels
     plt.figure(figsize=(8, 6))
     colors = ['red', 'green', 'blue']
@@ -64,6 +65,8 @@ if mode == '1':
     plt.title('PCA-based Visualization of Iris Dataset with Species Labels')
     plt.xlabel(f'Principal Component 1 ({explained_variance[0]:.2%} variance)')
     plt.ylabel(f'Principal Component 2 ({explained_variance[1]:.2%} variance)')
+    plt.xlabel(f'Principal Component 3 ({explained_variance[2]:.2%} variance)')
+    plt.ylabel(f'Principal Component 4 ({explained_variance[3]:.2%} variance)')
     plt.legend()
     plt.grid(True)
     plt.show()
@@ -78,7 +81,7 @@ elif mode == '2':
         print("Data has NOT been standardized.")
 
     # Apply PCA to reduce the data to 2 dimensions for clustering
-    pca = PCA(n_components=2)
+    pca = PCA(n_components=4)
     X_pca = pca.fit_transform(data_for_pca)
 
     # Apply K-means clustering on the PCA-reduced data
@@ -104,8 +107,10 @@ elif mode == '2':
 
     # Display the explained variance of each principal component
     explained_variance = pca.explained_variance_ratio_
-    print(f"Explained variance by Principal Component 1: {explained_variance[0]:.2%}")
-    print(f"Explained variance by Principal Component 2: {explained_variance[1]:.2%}")
+    print(f"Explained variance by Principal Component 1: {explained_variance[0]:.4%}")
+    print(f"Explained variance by Principal Component 2: {explained_variance[1]:.4%}")
+    print(f"Explained variance by Principal Component 3: {explained_variance[2]:.4%}")
+    print(f"Explained variance by Principal Component 4: {explained_variance[3]:.4%}")
 
     # Visualize the K-means clustering results
     plt.figure(figsize=(8, 6))
@@ -123,6 +128,8 @@ elif mode == '2':
     plt.title('Unsupervised K-means Clustering with PCA on Iris Dataset')
     plt.xlabel(f'Principal Component 1 ({explained_variance[0]:.2%} variance)')
     plt.ylabel(f'Principal Component 2 ({explained_variance[1]:.2%} variance)')
+    plt.xlabel(f'Principal Component 3 ({explained_variance[2]:.2%} variance)')
+    plt.ylabel(f'Principal Component 4 ({explained_variance[3]:.2%} variance)')
     plt.legend()
     plt.grid(True)
     plt.show()
